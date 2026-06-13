@@ -30,9 +30,9 @@
 /*------------------------------------------------------------------*/
 /* LED
  *------------------------------------------------------------------*/
-#define LEDS_NUMBER     2
-#define LED_PRIMARY_PIN PINNUM(0, 8) // Blue
-#define LED_SECONDARY_PIN PINNUM(0, 12) // Red
+#define LEDS_NUMBER     1
+#define LED_PRIMARY_PIN PINNUM(0, 12) // Blue
+//#define LED_SECONDARY_PIN PINNUM(0, 8) // Blue
 #define LED_STATE_ON    1
 
 // RGB LED (for internal status colors)
