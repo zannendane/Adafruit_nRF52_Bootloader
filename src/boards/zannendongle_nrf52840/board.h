@@ -35,6 +35,12 @@
 #define LED_SECONDARY_PIN PINNUM(0, 12) // Red
 #define LED_STATE_ON    1
 
+// RGB LED (for internal status colors)
+#define LED_RGB_RED_PIN        PINNUM(0, 12)   // P0.12
+#define LED_RGB_GREEN_PIN      PINNUM(1, 9)    // P1.09
+#define LED_RGB_BLUE_PIN       PINNUM(0, 8)    // P0.08
+#define BOARD_RGB_BRIGHTNESS   0x404040
+
 #define NEOPIXELS_NUMBER      0
 
 /*------------------------------------------------------------------*/
@@ -45,19 +51,19 @@
 //--------------------------------------------------------------------+
 // BLE OTA
 //--------------------------------------------------------------------+
-#define BLEDIS_MANUFACTURER "ZannenOTA"
+#define BLEDIS_MANUFACTURER "ZannenApp"
 #define BLEDIS_MODEL        "ZannenDongle"
 
 //--------------------------------------------------------------------+
 // USB
 //--------------------------------------------------------------------+
 #define USB_DESC_VID          0x1209
-#define USB_DESC_UF2_PID      0x7693
-#define USB_DESC_CDC_ONLY_PID 0x7693
+#define USB_DESC_UF2_PID      0x7690
+#define USB_DESC_CDC_ONLY_PID 0x7690
 
 #define UF2_PRODUCT_NAME      "ZannenDongle_nRF52840"
 #define UF2_VOLUME_LABEL      "ZNDONGLE"
 #define UF2_BOARD_ID          "nRF52840-ZannenDongle"
-#define UF2_INDEX_URL         "https://www.goofish.com/personal?spm=a21ybx.home.nav.1.4c053da6IJacHV"
+#define UF2_INDEX_URL         "https://github.com/zannendane/SlimeVR-Tracker-nRF-Receiver"
 
 #endif // _ZNDONGLE
