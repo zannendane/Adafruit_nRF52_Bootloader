@@ -57,3 +57,4 @@
 | waveshare_nrf52840_eval | Waveshare nRF52840 Eval | 0x239A:0x0029 | https://www.waveshare.com/wiki/NRF52840_Eval_Kit |
 | xiao_nrf52840_ble | Seeed XIAO nRF52840 | 0x2886:0x0044 | https://www.seeedstudio.com/ |
 | xiao_nrf52840_ble_sense | Seeed XIAO nRF52840 | 0x2886:0x0045 | https://www.seeedstudio.com/ |
+| zannensmolair_nrf52833 | ZannenSmolAir nRF52833 | 0x1209:0x7691 | https://github.com/zannendane/SlimeVR-Tracker-nRF |
