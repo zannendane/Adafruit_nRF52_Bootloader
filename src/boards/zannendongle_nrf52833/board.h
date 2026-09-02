@@ -22,27 +22,24 @@
  * THE SOFTWARE.
  */
 
-#ifndef _ZNSMOLAIR
-#define _ZNSMOLAIR
+#ifndef _ZNDONGLE33
+#define _ZNDONGLE33
 
 /*------------------------------------------------------------------*/
 /* Power
  *------------------------------------------------------------------*/
-// VDDH is shorted to VDD (3.3 V) on this board. REG0 (VDDH -> VDD) is an
-// LDO-only stage on the nRF52833 and must saturate in this topology, so its
-// UICR output voltage is set to 3.3 V (factory default is 1.8 V).
-#define UICR_REGOUT0_VALUE UICR_REGOUT0_VOUT_3V3
-
-// Enable the REG1 DC/DC converter (VDD -> 1.3 V core). This is the only
-// on-chip DC/DC stage of the nRF52833 (REG0 is LDO-only, hence no DCDCEN0
-// register exists on this chip); the board has the DCC/DEC4 LC network.
-#define ENABLE_DCDC_1 1
+// Normal voltage mode: VDDH is shorted to VDD (3.3 V) on this board, so
+// REG0 is automatically disabled and never supplies external components;
+// UICR REGOUT0 is intentionally left at its default (do not define
+// UICR_REGOUT0_VALUE). The DCC pin is not connected (no LC network), so
+// REG1 runs in LDO mode only and DCDC must stay disabled (do not define
+// ENABLE_DCDC_1).
 
 /*------------------------------------------------------------------*/
 /* LED
  *------------------------------------------------------------------*/
 #define LEDS_NUMBER     1
-#define LED_PRIMARY_PIN PINNUM(0, 31) // White status LED
+#define LED_PRIMARY_PIN PINNUM(0, 15) // White status LED
 #define LED_STATE_ON    1
 
 #define NEOPIXELS_NUMBER 0
@@ -50,27 +47,28 @@
 /*------------------------------------------------------------------*/
 /* BUTTON
  *------------------------------------------------------------------*/
-// This board has no buttons.
+// SW0 on P0.20, switch to GND. Hold at power-on to force DFU mode.
+#define BUTTON_DFU     20
+#define BUTTON_PULL    NRF_GPIO_PIN_PULLUP
 
 //--------------------------------------------------------------------+
 // BLE OTA
 //--------------------------------------------------------------------+
 #define BLEDIS_MANUFACTURER "ZannenApp"
-#define BLEDIS_MODEL        "ZannenSmolAir"
+#define BLEDIS_MODEL        "ZannenDongle33"
 
 //--------------------------------------------------------------------+
 // USB
 //--------------------------------------------------------------------+
-// VID 0x1209 is the pid.codes open-source VID; PID 0x7691 is the next free
-// PID after the ZannenDongle_nRF52840 board (0x7690) of the same vendor.
+// VID 0x1209 is the pid.codes open-source VID; PID 0x7692 is the next free
+// PID after ZannenDongle_nRF52840 (0x7690) and ZannenSmolAir (0x7691).
 #define USB_DESC_VID          0x1209
-#define USB_DESC_UF2_PID      0x7691
-#define USB_DESC_CDC_ONLY_PID 0x7691
+#define USB_DESC_UF2_PID      0x7692
+#define USB_DESC_CDC_ONLY_PID 0x7692
 
-// Board/firmware name: "ZannenSmolAir", vendor: "zannen".
-#define UF2_PRODUCT_NAME      "ZannenSmolAir"
-#define UF2_VOLUME_LABEL      "ZNSMOLAIR"
-#define UF2_BOARD_ID          "nRF52833-ZannenSmolAir"
-#define UF2_INDEX_URL         "https://github.com/zannendane/SlimeVR-Tracker-nRF"
+#define UF2_PRODUCT_NAME      "ZannenDongle_nRF52833"
+#define UF2_VOLUME_LABEL      "ZNDONGLE33"
+#define UF2_BOARD_ID          "nRF52833-ZannenDongle33"
+#define UF2_INDEX_URL         "https://github.com/zannendane/SlimeVR-Tracker-nRF-Receiver"
 
-#endif // _ZNSMOLAIR
+#endif // _ZNDONGLE33
